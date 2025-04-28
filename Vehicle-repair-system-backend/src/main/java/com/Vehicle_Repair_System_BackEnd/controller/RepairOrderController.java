@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/repairorders")
+@RequestMapping("/api/repair-orders")
 @RequiredArgsConstructor
 public class RepairOrderController {
 

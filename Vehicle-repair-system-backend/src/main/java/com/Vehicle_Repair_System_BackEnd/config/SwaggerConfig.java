@@ -1,7 +1,7 @@
 package com.Vehicle_Repair_System_BackEnd.config;
 
-import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
@@ -11,12 +11,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
 
+    private static final String KEY_BEARER_AUTH = "bearerAuth";
+
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
+                .addSecurityItem(new SecurityRequirement().addList(KEY_BEARER_AUTH))
                 .components(new Components()
-                        .addSecuritySchemes("bearerAuth",
+                        .addSecuritySchemes(KEY_BEARER_AUTH,
                                 new SecurityScheme()
                                         .name("Authorization")
                                         .type(SecurityScheme.Type.HTTP)

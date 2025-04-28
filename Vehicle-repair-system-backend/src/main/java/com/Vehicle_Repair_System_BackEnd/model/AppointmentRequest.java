@@ -1,7 +1,13 @@
 package com.Vehicle_Repair_System_BackEnd.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
 import java.util.Date;
@@ -12,11 +18,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AppointmentRequest {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class AppointmentRequest extends AuditorEntity {
 
     @ManyToOne
     @JoinColumn(name = "vehicle_id")
@@ -27,8 +29,4 @@ public class AppointmentRequest {
     private LocalTime startTime;
     private LocalTime endTime;
 
-    private String createBy;
-    private Date createdDate;
-    private String modifiedBy;
-    private Date modifiedDate;
 }

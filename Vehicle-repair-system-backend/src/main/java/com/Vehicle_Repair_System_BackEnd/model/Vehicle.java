@@ -1,9 +1,17 @@
 package com.Vehicle_Repair_System_BackEnd.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,15 +20,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Vehicle {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Vehicle extends AuditorEntity {
 
     private String name;
+
+    @NotBlank
+    @Column(nullable = false)
     private String plateNumber;
+    @NotBlank
+    @Column(nullable = false)
     private String brand;
+    @NotBlank
+    @Column(nullable = false)
     private String model;
     private Integer year;
     private String vinNumber;
@@ -28,11 +39,6 @@ public class Vehicle {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-
-    private String createBy;
-    private Date createdDate;
-    private String modifiedBy;
-    private Date modifiedDate;
 
     @OneToMany(mappedBy = "vehicle")
     private List<AppointmentRequest> appointmentRequests;

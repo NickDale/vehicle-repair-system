@@ -2,13 +2,16 @@ package com.Vehicle_Repair_System_BackEnd.controller;
 
 import com.Vehicle_Repair_System_BackEnd.model.Vehicle;
 import com.Vehicle_Repair_System_BackEnd.service.VehicleService;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+@Validated
 @RestController
 @RequestMapping("/api/vehicles")
 @RequiredArgsConstructor
@@ -22,7 +25,7 @@ public class VehicleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Vehicle> getById(@PathVariable Integer id) {
+    public ResponseEntity<Vehicle> getById(@PathVariable @Positive int id) {
         Optional<Vehicle> result = service.findById(id);
         return result.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -33,8 +36,8 @@ public class VehicleController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Vehicle> update(@PathVariable Integer id, @RequestBody Vehicle updated) {
-        if (!service.findById(id).isPresent()) {
+    public ResponseEntity<Vehicle> update(@PathVariable  @Positive int id, @RequestBody Vehicle updated) {
+        if (service.findById(id).isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         updated.setId(id);
@@ -42,7 +45,7 @@ public class VehicleController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable  @Positive int id) {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
     }

@@ -1,6 +1,6 @@
 package com.Vehicle_Repair_System_BackEnd.service;
 
-import com.Vehicle_Repair_System_BackEnd.model.CarService;
+import com.Vehicle_Repair_System_BackEnd.model.ServiceEntity;
 import com.Vehicle_Repair_System_BackEnd.repository.ServiceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,17 +15,17 @@ public class ServiceServiceImpl implements ServiceService {
     private final ServiceRepository repository;
 
     @Override
-    public List<CarService> findAll() {
+    public List<ServiceEntity> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<CarService> findById(Integer id) {
+    public Optional<ServiceEntity> findById(Integer id) {
         return repository.findById(id);
     }
 
     @Override
-    public CarService save(CarService entity) {
+    public ServiceEntity save(ServiceEntity entity) {
         return repository.save(entity);
     }
 

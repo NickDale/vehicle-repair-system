@@ -1,9 +1,11 @@
 package com.Vehicle_Repair_System_BackEnd.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.Date;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "m_parts", schema = "vrs_gamf")
@@ -11,18 +13,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Part {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Part extends AuditorEntity {
 
     private String name;
     private String description;
     private Double basePrice;
 
-    private String createBy;
-    private Date createdDate;
-    private String modifiedBy;
-    private Date modifiedDate;
 }

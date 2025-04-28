@@ -1,9 +1,13 @@
 package com.Vehicle_Repair_System_BackEnd.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.Date;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "provided_services", schema = "vrs_gamf")
@@ -11,11 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ProvidedService {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class ProvidedService extends AuditorEntity {
 
     @ManyToOne
     @JoinColumn(name = "repair_order_id")
@@ -23,14 +23,10 @@ public class ProvidedService {
 
     @ManyToOne
     @JoinColumn(name = "service_id")
-    private CarService carService;
+    private ServiceEntity serviceEntity;
 
     private String description;
     private Integer quantity;
     private Double price;
 
-    private String createBy;
-    private Date createdDate;
-    private String modifiedBy;
-    private Date modifiedDate;
 }
