@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2025 at 01:59 PM
+-- Generation Time: Apr 29, 2025 at 04:36 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,13 +33,13 @@ CREATE TABLE `applied_parts` (
   `id` int(11) NOT NULL,
   `repair_order_id` int(11) NOT NULL,
   `part_id` int(11) NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `quantity` int(11) NOT NULL,
   `price` float(10,2) NOT NULL,
-  `create_by` varchar(50) NOT NULL,
-  `created_date` date DEFAULT curdate(),
-  `modified_by` varchar(50) DEFAULT NULL,
-  `modified_date` date DEFAULT NULL
+  `create_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -52,13 +52,13 @@ CREATE TABLE `appointment_requests` (
   `id` int(11) NOT NULL,
   `vehicle_id` int(11) NOT NULL,
   `problem_description` varchar(255) NOT NULL,
-  `recommended_date` date DEFAULT NULL,
+  `recommended_date` datetime(6) DEFAULT NULL,
   `start_time` time DEFAULT NULL,
   `end_time` time DEFAULT NULL,
-  `create_by` varchar(50) NOT NULL,
-  `created_date` date DEFAULT curdate(),
-  `modified_by` varchar(50) DEFAULT NULL,
-  `modified_date` date DEFAULT NULL
+  `create_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -69,17 +69,17 @@ CREATE TABLE `appointment_requests` (
 
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` varchar(100) NOT NULL,
-  `city` varchar(20) DEFAULT NULL,
-  `postcode` varchar(20) DEFAULT NULL,
-  `street` varchar(100) DEFAULT NULL,
-  `street_number` varchar(100) DEFAULT NULL,
-  `create_by` varchar(50) NOT NULL,
-  `created_date` date DEFAULT curdate(),
-  `modified_by` varchar(50) DEFAULT NULL,
-  `modified_date` date DEFAULT NULL
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `postcode` varchar(255) DEFAULT NULL,
+  `street` varchar(255) DEFAULT NULL,
+  `street_number` varchar(255) DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91,15 +91,15 @@ CREATE TABLE `customers` (
 CREATE TABLE `invoices` (
   `id` int(11) NOT NULL,
   `repair_order_id` int(11) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `total_price` float(10,2) NOT NULL,
-  `paid_by` varchar(200) DEFAULT NULL,
-  `paid_date` date DEFAULT NULL,
-  `create_by` varchar(50) NOT NULL,
-  `created_date` date DEFAULT curdate(),
-  `modified_by` varchar(50) DEFAULT NULL,
-  `modified_date` date DEFAULT NULL
+  `paid_by` varchar(255) DEFAULT NULL,
+  `paid_date` datetime(6) DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -110,13 +110,13 @@ CREATE TABLE `invoices` (
 
 CREATE TABLE `m_parts` (
   `id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `base_price` float(10,2) DEFAULT NULL,
-  `create_by` varchar(50) NOT NULL,
-  `created_date` date DEFAULT curdate(),
-  `modified_by` varchar(50) DEFAULT NULL,
-  `modified_date` date DEFAULT NULL
+  `create_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -124,12 +124,12 @@ CREATE TABLE `m_parts` (
 --
 
 INSERT INTO `m_parts` (`id`, `name`, `description`, `base_price`, `create_by`, `created_date`, `modified_by`, `modified_date`) VALUES
-(7, 'Motor', '', 150000.00, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(8, 'Fagyálló', '', NULL, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(9, 'Olaj', '', 10000.00, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(10, 'Fékbetét', '', 50000.00, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(11, 'Gumi', '', 10000.00, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(12, 'Csavarok', '', NULL, 'balogh.norbert', '2025-04-15', NULL, NULL);
+(7, 'Motor', '', 150000.00, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(8, 'Fagyálló', '', NULL, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(9, 'Olaj', '', 10000.00, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(10, 'Fékbetét', '', 50000.00, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(11, 'Gumi', '', 10000.00, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(12, 'Csavarok', '', NULL, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -139,13 +139,13 @@ INSERT INTO `m_parts` (`id`, `name`, `description`, `base_price`, `create_by`, `
 
 CREATE TABLE `m_services` (
   `id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `base_price` float(10,2) DEFAULT NULL,
-  `create_by` varchar(50) NOT NULL,
-  `created_date` date DEFAULT curdate(),
-  `modified_by` varchar(50) DEFAULT NULL,
-  `modified_date` date DEFAULT NULL
+  `create_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -153,15 +153,15 @@ CREATE TABLE `m_services` (
 --
 
 INSERT INTO `m_services` (`id`, `name`, `description`, `base_price`, `create_by`, `created_date`, `modified_by`, `modified_date`) VALUES
-(1, 'teljes takarítás', '', NULL, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(2, 'Külső takarítás', '', NULL, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(3, 'belső takarítás', '', NULL, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(4, 'Kerékcsere', '', NULL, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(5, 'Olajcsere', '', NULL, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(6, 'fútómű beállítás', '', NULL, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(7, 'feényezés', '', 200000.00, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(8, 'Teljes átvizsgálás', '', 40000.00, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(9, 'Fékbetét csere', '', NULL, 'balogh.norbert', '2025-04-15', NULL, NULL);
+(1, 'teljes takarítás', '', NULL, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(2, 'Külső takarítás', '', NULL, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(3, 'belső takarítás', '', NULL, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(4, 'Kerékcsere', '', NULL, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(5, 'Olajcsere', '', NULL, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(6, 'fútómű beállítás', '', NULL, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(7, 'feényezés', '', 200000.00, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(8, 'Teljes átvizsgálás', '', 40000.00, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(9, 'Fékbetét csere', '', NULL, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -173,13 +173,13 @@ CREATE TABLE `provided_services` (
   `id` int(11) NOT NULL,
   `repair_order_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `quantity` int(11) NOT NULL,
   `price` float(10,2) NOT NULL,
-  `create_by` varchar(50) NOT NULL,
-  `created_date` date DEFAULT curdate(),
-  `modified_by` varchar(50) DEFAULT NULL,
-  `modified_date` date DEFAULT NULL
+  `create_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -193,11 +193,11 @@ CREATE TABLE `repair_orders` (
   `vehicle_id` int(11) NOT NULL,
   `appointment_request_id` int(11) DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
-  `repair_description` varchar(500) NOT NULL,
-  `create_by` varchar(50) NOT NULL,
-  `created_date` date DEFAULT curdate(),
-  `modified_by` varchar(50) DEFAULT NULL,
-  `modified_date` date DEFAULT NULL
+  `repair_description` varchar(255) DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -208,16 +208,16 @@ CREATE TABLE `repair_orders` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
   `user_type_id` int(11) NOT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `hashed_password` varchar(200) DEFAULT NULL,
-  `salt` varchar(200) DEFAULT NULL,
-  `create_by` varchar(50) NOT NULL,
-  `created_date` date DEFAULT curdate(),
-  `modified_by` varchar(50) DEFAULT NULL,
-  `modified_date` date DEFAULT NULL
+  `email` varchar(255) DEFAULT NULL,
+  `hashed_password` varchar(255) DEFAULT NULL,
+  `salt` varchar(255) DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -225,9 +225,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `user_type_id`, `email`, `hashed_password`, `salt`, `create_by`, `created_date`, `modified_by`, `modified_date`) VALUES
-(1, 'test admin', 'test_admin', 1, 'test@admin.com', NULL, NULL, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(2, 'emp1', 'test_emp1', 2, 'emp1@admin.com', NULL, NULL, 'balogh.norbert', '2025-04-15', NULL, NULL),
-(3, 'emp2', 'test_emp2', 2, 'emp2@admin.com', NULL, NULL, 'balogh.norbert', '2025-04-15', NULL, NULL);
+(1, 'test admin', 'test_admin', 1, 'test@admin.com', 'VxYWCG47pA/lFiTN+eAvIKeU6C4=', 'CJyoXhzTBrs=', 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(2, 'emp1', 'test_emp1', 2, 'emp1@admin.com', 'VxYWCG47pA/lFiTN+eAvIKeU6C4=', 'CJyoXhzTBrs=', 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL),
+(3, 'emp2', 'test_emp2', 2, 'emp2@admin.com', NULL, NULL, 'balogh.norbert', '2025-04-15 00:00:00.000000', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -237,7 +237,7 @@ INSERT INTO `users` (`id`, `name`, `username`, `user_type_id`, `email`, `hashed_
 
 CREATE TABLE `user_types` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -256,17 +256,17 @@ INSERT INTO `user_types` (`id`, `name`) VALUES
 
 CREATE TABLE `vehicles` (
   `id` int(11) NOT NULL,
-  `name` varchar(200) DEFAULT NULL,
-  `plate_number` varchar(10) NOT NULL,
-  `brand` varchar(50) NOT NULL,
-  `model` varchar(50) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `plate_number` varchar(255) NOT NULL,
+  `brand` varchar(255) NOT NULL,
+  `model` varchar(255) NOT NULL,
   `year` int(11) DEFAULT NULL,
-  `vin_number` varchar(50) DEFAULT NULL,
+  `vin_number` varchar(255) DEFAULT NULL,
   `customer_id` int(11) NOT NULL,
-  `create_by` varchar(50) NOT NULL,
-  `created_date` date DEFAULT curdate(),
-  `modified_by` varchar(50) DEFAULT NULL,
-  `modified_date` date DEFAULT NULL
+  `create_by` varchar(255) DEFAULT NULL,
+  `created_date` datetime(6) DEFAULT NULL,
+  `modified_by` varchar(255) DEFAULT NULL,
+  `modified_date` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

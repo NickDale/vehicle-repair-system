@@ -1,7 +1,10 @@
 package com.Vehicle_Repair_System_BackEnd.model;
 
+import com.Vehicle_Repair_System_BackEnd.model.enums.UserTypeEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,5 +20,6 @@ import lombok.NoArgsConstructor;
 public class UserType extends AbstractEntity {
 
     @Column(unique = true, nullable = false)
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private UserTypeEnum name;
 }

@@ -1,5 +1,6 @@
 package com.Vehicle_Repair_System_BackEnd.controller;
 
+import com.Vehicle_Repair_System_BackEnd.config.validation.Admin;
 import com.Vehicle_Repair_System_BackEnd.model.User;
 import com.Vehicle_Repair_System_BackEnd.service.UserService;
 import jakarta.validation.Valid;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 @Validated
 @RestController
+@Admin
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {

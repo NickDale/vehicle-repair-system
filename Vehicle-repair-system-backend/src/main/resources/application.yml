@@ -37,3 +37,7 @@ springdoc:
 logging:
   level:
     org.springframework.security: DEBUG
+
+jwt:
+  secret: my_jwt_secret_key_which_should_be_long
+  expiration: 3600000

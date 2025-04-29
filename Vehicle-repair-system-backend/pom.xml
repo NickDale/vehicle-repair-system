@@ -6,8 +6,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.Vehicle_Repair_System_BackEnd</groupId>
-    <artifactId>Vehicle_Repair_System_BackEnd</artifactId>
+    <groupId>com.vehicle-repair-system</groupId>
+    <artifactId>vehicle-repair-system</artifactId>
     <version>1.0.0</version>
     <name>Vehicle_Repair_System_BackEnd OAuth2 Bearer + Swagger Example</name>
     <description>Spring Boot 3.x project with OAuth2 Bearer token support and Swagger UI</description>
